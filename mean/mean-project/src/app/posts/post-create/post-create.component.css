@@ -5,4 +5,5 @@ mat-card {
 mat-form-field,
 textarea {
   width: 100%;
+  margin-bottom: 5px;
 }
