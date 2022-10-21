@@ -1,0 +1,15 @@
+<!-- local reference: #postInput. Get user input in component: postInput:HTMLTextAreaElement -->
+<!-- ngModel is in FormsModule which need to inject in NgModule -->
+<mat-card>
+  <mat-form-field>
+    <input matInput type="text" [(ngModel)]="enteredTitle" />
+  </mat-form-field>
+  <mat-form-field>
+    <!-- <mat-label>Please enter your post</mat-label> -->
+    <textarea matInput rows="6" [(ngModel)]="enteredContent"></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="accent" (click)="onAppPost()">
+    Save Post
+  </button>
+</mat-card>
+<!-- <p>{{ newPost }}</p> -->
