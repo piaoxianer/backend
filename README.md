@@ -1,2 +1,2 @@
 # backend
-Practical projects with MEAN stack
+Practical backend projects with MEAN stack and NestJS.
