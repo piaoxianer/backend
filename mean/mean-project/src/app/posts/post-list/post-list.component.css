@@ -10,3 +10,16 @@
 mat-spinner {
   margin: auto;
 }
+
+mat-expansion-panel-header {
+  font-size: larger;
+  font-weight: 500;
+}
+
+.post-image {
+  width: 100%;
+}
+.post-image img {
+  width: 100%;
+  box-shadow: 1px 1px 5px rgb(0, 0, 0.5);
+}
