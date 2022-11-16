@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const mongoose = require('mongoose');
 
 const postsRoutes = require('./routes/posts')
@@ -15,6 +16,8 @@ mongoose.connect('mongodb+srv://Ran:BM3WKw5WddbPGVW@cluster0.ijwubnw.mongodb.net
 // return a valid express middleware for parsing json data
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: data}));
+// static middleware:
+app.use('/images', express.static(path.join('backend/images')));
 
 app.use((req, res, next)=> {
   res.setHeader('Access-Control-Allow-Origin', '*');
