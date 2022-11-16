@@ -1,10 +1,13 @@
 import { AbstractControl } from '@angular/forms';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, of } from 'rxjs';
 
 // the return type of Promise in [] is just a dynamic property name
 export const mimeType = (
   control: AbstractControl
 ): Promise<{ [key: string]: any }> | Observable<{ [key: string]: any }> => {
+  if (typeof control.value === 'string') {
+    return of({ null: null });
+  }
   const file = control.value as File;
   const fileReader = new FileReader();
   const frObs = new Observable((observer: Observer<{ [key: string]: any }>) => {
