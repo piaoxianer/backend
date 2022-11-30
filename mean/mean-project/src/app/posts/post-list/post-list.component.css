@@ -7,13 +7,17 @@
   text-align: center;
 }
 
+mat-expansion-panel-header {
+  font-size: larger;
+  font-weight: 500;
+}
+
 mat-spinner {
   margin: auto;
 }
 
-mat-expansion-panel-header {
-  font-size: larger;
-  font-weight: 500;
+mat-paginator {
+  margin-top: 1rem;
 }
 
 .post-image {
