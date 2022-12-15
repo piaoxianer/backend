@@ -27,32 +27,38 @@ router.post("/signup", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
+  // create a new variable to prevent Cross-Origin Request Blocked issue when accessing the remote resource at backend.
+  let fetchedUser;
   User.findOne({ email: req.body.email })
     .then(user => {
-      console.log(user);
+      // console.log(user);
       if (!user) {
         return res.status(401).json({
           message: "Auth failed!"
         });
       }
+      fetchedUser = user;
       return bcrypt.compare(req.body.password, user.password);
     })
     .then(result => {
+      console.log(result);
       if (!result) {
         return res.status(401).json({
           message: "Auth failed!"
         });
       }
       const token = jwt.sign(
-        {email: user.email, userId: user._id},
+        {email: fetchedUser.email, userId: fetchedUser._id},
         "secret_this_should_be_longer",
         {expiresIn: "1h"}
       );
+      console.log(token);
       res.status(200).json({
         token: token
       });
     })
     .catch(err => {
+      console.log(err);
       res.status(401).json({
         message: "Auth failed!"
       });
