@@ -8,7 +8,7 @@ import { AuthData } from './auth-data.model';
 })
 export class AuthService {
   private isAuthenticated = false;
-  private token!: string;
+  private token!: string | null;
   private authStatusListener = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
@@ -47,5 +47,11 @@ export class AuthService {
           this.authStatusListener.next(true);
         }
       });
+  }
+
+  logout() {
+    this.token = null;
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
   }
 }
