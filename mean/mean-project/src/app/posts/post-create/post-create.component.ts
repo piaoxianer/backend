@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Post } from 'src/app/interfaces/post.interface';
 
-import { PostsService } from 'src/app/services/posts.service';
+import { PostsService } from 'src/app/posts/posts.service';
 import { mimeType } from './mime-type.validator';
 
 @Component({
