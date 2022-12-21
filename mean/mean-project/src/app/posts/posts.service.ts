@@ -23,9 +23,12 @@ export class PostsService {
   getPosts(postsPerPage: number, currentPage: number) {
     const queryParams = `?pagesize=${postsPerPage}&page=${currentPage}`;
     this.http
-      .get<{ message: string; posts: any; maxPosts: number }>(
-        'http://localhost:3000/api/posts' + queryParams
-      )
+      .get<{
+        message: string;
+        posts: any;
+        maxPosts: number;
+        creator: string;
+      }>('http://localhost:3000/api/posts' + queryParams)
       .pipe(
         map((postData) => {
           // this returned data will be wrapped into an obs
@@ -62,6 +65,7 @@ export class PostsService {
       title: string;
       content: string;
       imagePath: string;
+      creator: string;
     }>('http://localhost:3000/api/posts/' + id);
   }
 
@@ -95,6 +99,7 @@ export class PostsService {
         title: title,
         content: content,
         imagePath: image as string,
+        creator: null,
       };
     }
     this.http
