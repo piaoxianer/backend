@@ -36,6 +36,7 @@ export class PostsService {
                 content: post.content,
                 id: post._id,
                 imagePath: post.imagePath,
+                creator: post.creator,
               };
             }),
             maxPosts: postData.maxPosts,
@@ -80,6 +81,7 @@ export class PostsService {
   }
 
   updatePost(id: string, title: string, content: string, image: File | string) {
+    console.log('The update works!');
     let postData: Post | FormData;
     if (typeof (image === 'object')) {
       postData = new FormData();
