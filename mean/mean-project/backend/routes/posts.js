@@ -18,7 +18,7 @@ router.put(
   '/:id',
   checkAuth,
   extractFile,
-  PostController.updatePosts)
+  PostController.updatePost)
 
 router.get('/:id', PostController.getPost)
 

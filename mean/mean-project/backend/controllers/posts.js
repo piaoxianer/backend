@@ -23,7 +23,7 @@ exports.createPost = (req, res, next) => {
     });
   };
 
-  exports.updatePosts = (req, res, next)=>{
+  exports.updatePost = (req, res, next)=>{
     let imagePath = req.body.imagePath;
     if (req.file) {
       const url = req.protocol + '://' + req.get('host');
@@ -36,9 +36,10 @@ exports.createPost = (req, res, next) => {
       imagePath: imagePath,
       creator: req.userData.userId
     })
+    console.log(post);
     Post.updateOne({_id: req.params.id, creator: req.userData.userId }, post).then(result => {
       console.log(result);
-      if (result.modifiedCount > 0) {
+      if (result.matchedCount > 0) {
         res.status(200).json({
           message: 'Update sucessful!',
           postTitle: result.title,

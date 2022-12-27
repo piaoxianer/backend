@@ -70,7 +70,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         });
       } else {
         this.mode = 'create';
-        this.postId = '';
+        this.postId = null;
       }
     });
   }
@@ -90,6 +90,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   onSavePost() {
     if (this.form.invalid) {
       this.isLoading = false;
+      console.log(this.form.value);
       return;
     }
     this.isLoading = true;
@@ -100,6 +101,7 @@ export class PostCreateComponent implements OnInit, OnDestroy {
         this.form.value.image
       );
     } else {
+      console.log('post update');
       this.postService.updatePost(
         this.postId,
         this.form.value.title,
