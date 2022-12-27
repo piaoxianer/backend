@@ -90,7 +90,6 @@ export class PostCreateComponent implements OnInit, OnDestroy {
   onSavePost() {
     if (this.form.invalid) {
       this.isLoading = false;
-      console.log(this.form.value);
       return;
     }
     this.isLoading = true;
